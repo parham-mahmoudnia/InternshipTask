@@ -1,0 +1,52 @@
+﻿@model ExperimentalTask.Models.Domain.Product
+@{
+}
+<div class="mt-2" style="width:50%">
+    <form asp-action="EditProduct">
+        <input asp-for="Id" type="hidden" class="form-control">
+
+        <h2>Edit Product</h2>
+
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" type="text" class="form-control">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ProduceDate" class="form-label">ProduceDate</label>
+            <input asp-for="ProduceDate" type="date" class="form-control">
+            <span class="text-danger" asp-validation-for="ProduceDate"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ManufacturePhone" class="form-label">ManufacturePhone</label>
+            <input asp-for="ManufacturePhone" type="text" class="form-control">
+            <span class="text-danger" asp-validation-for="ManufacturePhone"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ManufactureEmail" class="form-label">ManufactureEmail</label>
+            <input asp-for="ManufactureEmail" type="text" class="form-control">
+            <span class="text-danger" asp-validation-for="ManufactureEmail"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="IsAvailable" class="form-label">IsAvailable</label>
+            <input asp-for="IsAvailable" type="text" class="form-control">
+            <span class="text-danger" asp-validation-for="IsAvailable"></span>
+        </div>
+
+
+
+        @if (TempData["msg"] != null)
+        {
+            <div class="mb-3">
+                @TempData["msg"]
+            </div>
+        }
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/Product/DisplayProducts" class="btn btn-primary">Back</a>
+    </form>
+</div>

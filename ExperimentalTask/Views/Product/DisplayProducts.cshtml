@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ExperimentalTask.Models.Domain.Product>
+
+@{
+}
+
+<div class="mt-2" style="width:80%">
+    <div class="row">
+        <h2>Product</h2>
+        <div class="col-md-4">
+             @if (!string.IsNullOrEmpty(User.Identity.Name))
+            {
+                <a href="/Product/AddProduct" class="btn btn-primary">Add Product</a>
+            }
+
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>ProduceDate</th>
+                    <th>ManufacturePhone</th>
+                    <th>ManufactureEmail</th>
+                    <th>IsAvailable</th>
+
+                    @if (!string.IsNullOrEmpty(User.Identity.Name))
+                    {
+                    <th>Action</th>
+                    }
+                </tr>
+
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td> @product.Name</td>
+                        <td>@product.ProduceDate</td>
+                        <td> @product.ManufacturePhone</td>
+                        <td> @product.ManufactureEmail</td>
+                        <td>@product.IsAvailable</td>
+
+                        @if (!string.IsNullOrEmpty(User.Identity.Name))
+                        {
+                            <td>
+                                <a class="btn btn-success" href="/Product/EditProduct?id=@product.Id">Edit</a>
+                                <a class="btn btn-danger" href="/Product/DeleteProduct?id=@product.Id">Delete</a>
+                            </td>
+                        }
+
+                    </tr>
+                }
+            </thead>
+        </table>
+    </div>
+
+</div>
